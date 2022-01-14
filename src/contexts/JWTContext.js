@@ -11,7 +11,8 @@ import accountReducer from 'store/accountReducer';
 
 // project imports
 import Loader from 'ui-component/Loader';
-import axios from 'axios';
+import axiosServices from 'utils/axios';
+import axios from 'utils/axios';
 
 const chance = new Chance();
 
@@ -57,7 +58,7 @@ export const JWTProvider = ({ children }) => {
                 const serviceToken = window.localStorage.getItem('serviceToken');
                 if (serviceToken && verifyToken(serviceToken)) {
                     setSession(serviceToken);
-                    const response = await axios.get('http://localhost:8081/accounts/api/users/1');
+                    const response = await axios.get('/account/api/users/');
                     const { user } = response.data;
                     dispatch({
                         type: LOGIN,
@@ -83,7 +84,7 @@ export const JWTProvider = ({ children }) => {
     }, []);
 
     const login = async (email, password) => {
-        const response = await axios.post('http://127.0.0.1:8081/accounts/api/token/', { email, password });
+        const response = await axios.post('/accounts/api/login/', { email, password });
         const { serviceToken, user } = response.data;
         setSession(serviceToken);
         dispatch({
@@ -97,8 +98,10 @@ export const JWTProvider = ({ children }) => {
 
     const register = async (email, password, firstName, lastName) => {
         // todo: this flow need to be recode as it not verified
+        
         const id = chance.bb_pin();
-        const response = await axios.post('/api/account/register', {
+        //const response = await axios.post('http://127.0.0.1:8081/account/registration/', {
+        const response = await axios.post('/account/registration/', {    
             id,
             email,
             password,
@@ -107,8 +110,10 @@ export const JWTProvider = ({ children }) => {
         });
         let users = response.data;
 
-        if (window.localStorage.getItem('users') !== undefined && window.localStorage.getItem('users') !== null) {
+        if (window.localStorage.getItem('users') !== undefined && window.localStorage.getItem('users') !== '{"detail":"Confirmation email sent"}') {
             const localUsers = window.localStorage.getItem('users');
+            console.log(window.localStorage);
+            console.log(localUsers);
             users = [
                 ...JSON.parse(localUsers),
                 {

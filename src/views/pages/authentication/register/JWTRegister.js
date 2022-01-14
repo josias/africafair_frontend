@@ -106,7 +106,7 @@ const JWTRegister = ({ ...others }) => {
                                 alertSeverity: 'success'
                             });
                             setTimeout(() => {
-                                navigate('/login', { replace: true });
+                                navigate('/activationrequest', { replace: true });
                             }, 1500);
                         }
                     } catch (err) {
@@ -241,7 +241,7 @@ const JWTRegister = ({ ...others }) => {
                                         <Typography variant="subtitle1">
                                             Agree with &nbsp;
                                             <Typography variant="subtitle1" component={Link} to="#">
-                                                Terms & Condition.
+                                                Terms & Condition Go.
                                             </Typography>
                                         </Typography>
                                     }

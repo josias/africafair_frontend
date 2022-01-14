@@ -15,6 +15,7 @@ const AuthCodeVerification1 = Loadable(lazy(() => import('views/pages/authentica
 // login option 2 routing
 const AuthLogin2 = Loadable(lazy(() => import('views/pages/authentication/authentication2/Login2')));
 const AuthRegister2 = Loadable(lazy(() => import('views/pages/authentication/authentication2/Register2')));
+const AuthActivationRequest2 = Loadable(lazy(() => import('views/pages/authentication/authentication2/ActivationRequest2')))
 const AuthForgotPassword2 = Loadable(lazy(() => import('views/pages/authentication/authentication2/ForgotPassword2')));
 const AuthCheckMail2 = Loadable(lazy(() => import('views/pages/authentication/authentication2/CheckMail2')));
 const AuthResetPassword2 = Loadable(lazy(() => import('views/pages/authentication/authentication2/ResetPassword2')));
@@ -72,6 +73,10 @@ const AuthenticationRoutes = {
         {
             path: '/pages/login/login2',
             element: <AuthLogin2 />
+        },
+        {
+            path: '/pages/register/ActivationRequest2',
+            element: <AuthActivationRequest2 />
         },
         {
             path: '/pages/register/register2',

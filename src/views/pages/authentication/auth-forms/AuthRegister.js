@@ -106,7 +106,7 @@ const JWTRegister = ({ ...others }) => {
                                 alertSeverity: 'success'
                             });
                             setTimeout(() => {
-                                navigate('/login', { replace: true });
+                                navigate('/activationrequest', { replace: true });
                             }, 1500);
                         }
                     } catch (err) {

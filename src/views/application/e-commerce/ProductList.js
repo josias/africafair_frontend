@@ -245,10 +245,10 @@ const ProductList = () => {
     };
 
     const getProducts = async () => {
-        //const response = await axios.get('/api/products/list');
-        const response = await axios.create({
-            baseURL: 'http://127.0.0.1:8081'
-        }).get('/products/list');
+        const response = await axios.get('/products/api/list');
+        //const response = await axios.create({
+        //    baseURL: 'http://127.0.0.1:8081'
+       // }).get('/products/api/list');
         setRows(response.data);
     };
 

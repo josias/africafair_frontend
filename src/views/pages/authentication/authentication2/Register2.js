@@ -19,16 +19,16 @@ import imgMain from 'assets/images/auth/img-a2-signup.svg';
 // carousel items
 const items = [
     {
-        title: 'Power of React with Material UI',
-        description: 'Powerful and easy to use multipurpose theme'
+        title: 'Discount Fair',
+        description: 'Un outil de fidélisation puissant grâce au digital'
     },
     {
-        title: 'Power of React with Material UI',
-        description: 'Powerful and easy to use multipurpose theme'
+        title: 'Discount Fair',
+        description: 'Pour économiser sur vos achats et faire profiter vos relations'
     },
     {
-        title: 'Power of React with Material UI',
-        description: 'Powerful and easy to use multipurpose theme'
+        title: 'Discount Fair',
+        description: 'Vous avez le choix du meilleur produit au bout des doigts'
     }
 ];
 
@@ -63,7 +63,7 @@ const Register = () => {
                             sx={{ minHeight: { xs: 'calc(100vh - 68px)', md: 'calc(100vh - 152px)' } }}
                         >
                             <Stack justifyContent="center" alignItems="center" spacing={5} m={2}>
-                                <Box component={Link} to="#" sx={{ display: { xs: 'block', md: 'none' } }}>
+                                <Box component={Link} to="/home" sx={{ display: { xs: 'block', md: 'none' } }}>
                                     <Logo />
                                 </Box>
                                 <AuthCardWrapper border={matchDownMD}>

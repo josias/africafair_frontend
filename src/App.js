@@ -33,12 +33,12 @@ const App = () => {
                 {/* <RTLLayout> */}
                 <Locales>
                     <NavigationScroll>
-                        {<JWTProvider>
+                        <JWTProvider>
                             <>
                                 <Routes />
                                 <Snackbar />
                             </>
-                         </JWTProvider>}
+                         </JWTProvider>
                     </NavigationScroll>
                 </Locales>
                 {/* </RTLLayout> */}

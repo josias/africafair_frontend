@@ -69,23 +69,23 @@ const AppBar = ({ ...others }) => {
                             <Logo />
                         </Typography>
                         <Stack direction="row" sx={{ display: { xs: 'none', sm: 'block' } }} spacing={2}>
-                            <Button color="inherit" component={Link} href="#" target="_blank">
-                                Home
+                            <Button color="inherit" component={RouterLink} to="/" target="_self">
+                                About
                             </Button>
-                            <Button color="inherit" component={RouterLink} to="login" target="_blank">
-                                Dashboard
+                            <Button color="inherit" component={RouterLink} to="login" target="_self">
+                                My Fair
                             </Button>
-                            <Button color="inherit" component={Link} href="https://codedthemes.gitbook.io/berry" target="_blank">
-                                Documentation
+                            <Button color="inherit" component={RouterLink} to="/visitfair" target="_self">
+                                Visit Fair
                             </Button>
                             <Button
-                                component={Link}
-                                href="https://material-ui.com/store/items/berry-react-material-admin/"
+                                component={RouterLink}
+                                to="/register"
                                 disableElevation
                                 variant="contained"
                                 color="secondary"
                             >
-                                Purchase Now
+                                Register on Fair
                             </Button>
                         </Stack>
                         <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
@@ -107,7 +107,7 @@ const AppBar = ({ ...others }) => {
                                                 <ListItemIcon>
                                                     <IconHome2 />
                                                 </ListItemIcon>
-                                                <ListItemText primary="Home" />
+                                                <ListItemText primary="About" />
                                             </ListItemButton>
                                         </Link>
                                         <Link style={{ textDecoration: 'none' }} href="/login" target="_blank">
@@ -115,31 +115,31 @@ const AppBar = ({ ...others }) => {
                                                 <ListItemIcon>
                                                     <IconDashboard />
                                                 </ListItemIcon>
-                                                <ListItemText primary="Dashboard" />
+                                                <ListItemText primary="My Fair" />
                                             </ListItemButton>
                                         </Link>
                                         <Link
                                             style={{ textDecoration: 'none' }}
-                                            href="https://codedthemes.gitbook.io/berry"
+                                            href="/visitfair"
                                             target="_blank"
                                         >
                                             <ListItemButton component="a">
                                                 <ListItemIcon>
                                                     <IconBook />
                                                 </ListItemIcon>
-                                                <ListItemText primary="Documentation" />
+                                                <ListItemText primary="Visit Fair" />
                                             </ListItemButton>
                                         </Link>
                                         <Link
                                             style={{ textDecoration: 'none' }}
-                                            href="https://material-ui.com/store/items/berry-react-material-admin/"
+                                            href="/register"
                                             target="_blank"
                                         >
                                             <ListItemButton component="a">
                                                 <ListItemIcon>
                                                     <IconCreditCard />
                                                 </ListItemIcon>
-                                                <ListItemText primary="Purchase Now" />
+                                                <ListItemText primary="Register" />
                                             </ListItemButton>
                                         </Link>
                                     </List>

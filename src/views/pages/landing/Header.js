@@ -68,9 +68,9 @@ const HeaderPage = () => {
                                         lineHeight: 1.4
                                     }}
                                 >
-                                    Build Your Next Project With
+                                    Join the world-class discounts market
                                     <Box component="span" sx={{ ml: 2, color: theme.palette.primary.main }}>
-                                        Berry
+                                        Fair
                                     </Box>
                                 </Typography>
                             </motion.div>
@@ -96,7 +96,7 @@ const HeaderPage = () => {
                                         lineHeight: 1.4
                                     }}
                                 >
-                                    Berry is React based admin template which helps you to build faster and beautiful web applications.
+                                    Fair is a platform which help vendors to retain the customers by giving them, best products at great discounts.
                                 </Typography>
                             </motion.div>
                         </Grid>
@@ -117,24 +117,24 @@ const HeaderPage = () => {
                                             <Button
                                                 component={RouterLink}
                                                 to="/dashboard/default"
-                                                target="_blank"
+                                                target="_self"
                                                 size="large"
                                                 variant="contained"
                                                 color="secondary"
                                             >
-                                                Live Preview
+                                                Explore My Fair
                                             </Button>
                                         </AnimateButton>
                                     </Grid>
                                     <Grid item>
                                         <Button
-                                            component={Link}
-                                            href="https://material-ui.com/store/items/berry-react-material-admin/"
-                                            target="_blank"
+                                            component={RouterLink}
+                                            to="/register"
+                                            target="_self"
                                             size="large"
                                             variant="text"
                                         >
-                                            Purchase Now
+                                            Register
                                         </Button>
                                     </Grid>
                                 </Grid>
