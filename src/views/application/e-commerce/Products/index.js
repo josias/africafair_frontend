@@ -31,8 +31,8 @@ import ProductFilterView from './ProductFilterView';
 import ProductCard from 'ui-component/cards/ProductCard';
 import FloatingCart from 'ui-component/cards/FloatingCart';
 import SkeletonProductPlaceholder from 'ui-component/cards/Skeleton/ProductPlaceholder';
-//import axios from 'utils/axios';
-import axios from 'axios';
+import axios from 'utils/axios';
+//import axios from 'axios';
 
 import { SET_MENU, RESET_CART } from 'store/actions';
 import { appDrawerWidth, gridSpacing } from 'store/constant';

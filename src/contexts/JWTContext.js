@@ -34,12 +34,15 @@ const verifyToken = (serviceToken) => {
     return decoded.exp > Date.now() / 1000;
 };
 
-const setSession = (serviceToken) => {
-    if (serviceToken) {
-        localStorage.setItem('serviceToken', serviceToken);
-        axios.defaults.headers.common.Authorization = `Bearer ${serviceToken}`;
+const setSession = (refreshToken, accessToken) => {
+    if (refreshToken && accessToken) {
+        localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem('accessToken', accessToken);
+        axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
     } else {
-        localStorage.removeItem('serviceToken');
+        localStorage.removeItem('refreshToken');
+        localStorage.removeItem('accessToken');
+
         delete axios.defaults.headers.common.Authorization;
     }
 };
@@ -55,11 +58,17 @@ export const JWTProvider = ({ children }) => {
     useEffect(() => {
         const init = async () => {
             try {
-                const serviceToken = window.localStorage.getItem('serviceToken');
-                if (serviceToken && verifyToken(serviceToken)) {
-                    setSession(serviceToken);
-                    const response = await axios.get('/account/api/users/');
+                const accessToken = window.localStorage.getItem('accessToken');
+                const refreshToken = window.localStorage.getItem('refreshToken'); 
+                //if (serviceToken && verifyToken(serviceToken)) {
+                  if (accessToken) {  
+                    setSession(refreshToken, accessToken);
+                    console.log('accessToken ' + accessToken);
+                    const {user_id} = jwtDecode(accessToken);
+
+                    const response = await axios.get('/accounts/api/users/'+user_id);
                     const { user } = response.data;
+                    console.log('Bingo ' + user);
                     dispatch({
                         type: LOGIN,
                         payload: {
@@ -85,8 +94,13 @@ export const JWTProvider = ({ children }) => {
 
     const login = async (email, password) => {
         const response = await axios.post('/accounts/api/login/', { email, password });
-        const { serviceToken, user } = response.data;
-        setSession(serviceToken);
+        const { refresh, access } = response.data;
+        console.log(refresh);
+        console.log(access)
+        const {user_id} =  jwtDecode(access);  
+        const user = user_id;
+       
+        setSession(refresh, access);
         dispatch({
             type: LOGIN,
             payload: {
@@ -100,9 +114,9 @@ export const JWTProvider = ({ children }) => {
         // todo: this flow need to be recode as it not verified
         
         const id = chance.bb_pin();
-        //const response = await axios.post('http://127.0.0.1:8081/account/registration/', {
+       
         const response = await axios.post('/account/registration/', {    
-            id,
+            
             email,
             password,
             firstName,
@@ -111,9 +125,9 @@ export const JWTProvider = ({ children }) => {
         let users = response.data;
 
         if (window.localStorage.getItem('users') !== undefined && window.localStorage.getItem('users') !== '{"detail":"Confirmation email sent"}') {
+            
             const localUsers = window.localStorage.getItem('users');
-            console.log(window.localStorage);
-            console.log(localUsers);
+
             users = [
                 ...JSON.parse(localUsers),
                 {
@@ -129,6 +143,12 @@ export const JWTProvider = ({ children }) => {
     };
 
     const logout = () => {
+      //const logout = async() => {
+
+        const localUsers = window.localStorage.getItem('users');
+        console.log(window.localStorage);
+        console.log(localUsers);
+
         setSession(null);
         dispatch({ type: LOGOUT });
     };

@@ -34,8 +34,8 @@ import { format } from 'date-fns';
 import MainCard from 'ui-component/cards/MainCard';
 import Avatar from 'ui-component/extended/Avatar';
 import Chip from 'ui-component/extended/Chip';
-//import axios from 'utils/axios';
-import axios from 'axios';
+import axios from 'utils/axios';
+//import axios from 'axios';
 
 // assets
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -249,6 +249,7 @@ const ProductList = () => {
         //const response = await axios.create({
         //    baseURL: 'http://127.0.0.1:8081'
        // }).get('/products/api/list');
+        console.log('product list' + JSON.parse(response.data));
         setRows(response.data);
     };
 

@@ -2,7 +2,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 // material-ui
 import { useTheme, styled } from '@mui/material/styles';
-import { Box, Button, Container, Grid, Link, Typography } from '@mui/material';
+import { Box, Button, Container, Grid, Typography } from '@mui/material';
 
 // third party
 import { motion } from 'framer-motion';
