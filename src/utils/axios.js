@@ -2,8 +2,10 @@
 
 import axios from 'axios';
 
+const {REACT_APP_HOST_API} = process.env
+
 const axiosServices = axios.create({
-    baseURL: 'http://127.0.0.1:8081/'
+    baseURL: REACT_APP_HOST_API
 });
 
 // interceptor for http
